@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: zinnbe
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user_db
+    username: admin
+    password: 123Hexa
