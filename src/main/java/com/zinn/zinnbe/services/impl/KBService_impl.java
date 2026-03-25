@@ -19,7 +19,7 @@ public class KBService_impl implements KBService{
     public SuccessMessage fileUpload(MultipartFile file){
         SuccessMessage response = new SuccessMessage("File uploaded successfully!");
         try{
-            Map result = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+            Map<?, ?> result = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
             System.out.println(result.get("secure_url").toString());
         }
         catch(IOException e){
