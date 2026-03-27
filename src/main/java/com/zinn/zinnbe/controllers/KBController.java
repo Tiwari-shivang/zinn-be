@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.zinn.zinnbe.DTOs.FileUploadRequest;
 import com.zinn.zinnbe.services.KBService;
 
 @RestController
@@ -16,7 +17,8 @@ public class KBController {
     private KBService kbService;
 
     @PostMapping("/upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file){
-        return ResponseEntity.ok(kbService.fileUpload(file));
+    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("description") String description){
+        FileUploadRequest request = new FileUploadRequest(description);
+        return ResponseEntity.ok(kbService.fileUpload(file, request));
     }
 }

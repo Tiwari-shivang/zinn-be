@@ -1,6 +1,6 @@
 package com.zinn.zinnbe.models;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.Map;
 import java.util.UUID;
 
@@ -43,6 +43,7 @@ public class Document {
     private String fileName;
 
     private String content;
+    
     @Column(name = "meta_data")
     @JdbcTypeCode(SqlTypes.JSON)
     private Map<String, String> metaData;
