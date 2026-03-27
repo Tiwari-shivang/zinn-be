@@ -1,6 +1,7 @@
 package com.zinn.zinnbe.models;
 
-import java.sql.Timestamp;
+import java.security.Timestamp;
+import java.util.Map;
 import java.util.UUID;
 
 import org.hibernate.annotations.JdbcTypeCode;
@@ -11,6 +12,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,19 +25,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tenants")
-public class Tenant {
+@Table(name = "user_preferences")
+public class Theme {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @JdbcTypeCode(SqlTypes.CHAR)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String industry, description;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne
+    private Users user;
 
-    @Column(name = "web_url")
-    private String webUrl;
+    @Column(name = "dashboard_layout")
+    @JdbcTypeCode(SqlTypes.JSON)
+    private Map<String, String> dashboardLayout;
 
-    private String name;
     @Column(name = "created_at")
     private Timestamp createdAt;
 }

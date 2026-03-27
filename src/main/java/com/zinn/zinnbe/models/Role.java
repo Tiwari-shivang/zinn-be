@@ -27,5 +27,5 @@ public class Role {
     @JdbcTypeCode(SqlTypes.CHAR)
     private UUID id;
 
-    private String name, description;
+    private String name;
 }

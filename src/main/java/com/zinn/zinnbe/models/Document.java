@@ -36,6 +36,12 @@ public class Document {
     @ManyToOne
     private Tenant tenant;
 
+    @Column(name = "file_type")
+    private String fileType;
+
+    @Column(name = "file_name")
+    private String fileName;
+
     private String content;
     @Column(name = "meta_data")
     @JdbcTypeCode(SqlTypes.JSON)
